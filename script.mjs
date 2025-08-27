@@ -12,12 +12,20 @@
 
 async function fetchPokemonByName(name) {
     try {
-        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
-        if (!res.ok) throw new Error(`Pokemon ${name} not found`);
-        const data = await res.json();
-        console.log(data)
+        const resPoke = await fetch(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
+        if (!resPoke.ok) throw new Error(`Pokemon ${name} not found`);
+        const pokeData = await resPoke.json();
+   
+        const resSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${name.toLowerCase()}`);
+        const speciesData = await resSpecies.json();
 
-        return data;
+        // console.log(pokeData);
+        // console.log(speciesData);
+
+        const combinedData = {...pokeData, species: speciesData};
+
+        // console.log(combinedData);
+        return combinedData;
     } catch (error) {
         console.error(error);
     }
@@ -48,10 +56,11 @@ function displayPokemon(pokemon) {
     img.src = pokemon.sprites.front_default;
     img.alt = pokemon.name;
 
+    const desc = document.createElement('p');
+    desc.textContent = pokemon.species.flavor_text_entries[0].flavor_text;
 
 
-
-    display.append(name, typing, img);
+    display.append(name, typing, img, desc);
 }
 
 const search = document.getElementById('search');

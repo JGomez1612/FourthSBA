@@ -13,18 +13,17 @@
 async function fetchPokemonByName(name) {
     try {
         const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`);
-        if (!res.ok) {
-            throw new Error(`Pokemon ${name} not found`);
-        }
+        if (!res.ok) throw new Error(`Pokemon ${name} not found`);
         const data = await res.json();
-        displayPokemon(data);
+        console.log(data)
 
+        return data;
     } catch (error) {
         console.error(error);
     }
 }
 
-fetchPokemonByName("");
+fetchPokemonByName("meowscarada");
 
 function displayPokemon(pokemon) {
     const display = document.getElementById('display');
@@ -42,12 +41,29 @@ function displayPokemon(pokemon) {
     if (pokemon.types.length === 1) {
         typing.textContent = `Type: ` + pokemon.types[0].type.name;
     } else {
-        typing.textContent = `Types: ` + pokemon.types[0].type.name + '|' + pokemon.types[1].type.name;
+        typing.textContent = `Types: ` + pokemon.types[0].type.name + ' | ' + pokemon.types[1].type.name;
     }
 
     const img = document.createElement('img');
     img.src = pokemon.sprites.front_default;
-    img.alt = pokemon.name
+    img.alt = pokemon.name;
+
+
+
 
     display.append(name, typing, img);
 }
+
+const search = document.getElementById('search');
+const input = document.getElementById('searchInput');
+
+search.addEventListener('submit', async (e) =>{
+    e.preventDefault();
+    const pokeName = input.value;
+    if(!pokeName) return;
+
+    const pokeData = await fetchPokemonByName(pokeName);
+    displayPokemon(pokeData);
+
+    input.value = '';
+});

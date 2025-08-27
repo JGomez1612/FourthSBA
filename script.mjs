@@ -44,6 +44,7 @@ function displayPokemon(pokemon) {
 
     const name = document.createElement('h2');
     name.textContent = pokemon.name;
+    name.classList.add('name')
 
     const typing = document.createElement('p');
     if (pokemon.types.length === 1) {
@@ -58,6 +59,7 @@ function displayPokemon(pokemon) {
 
     const desc = document.createElement('p');
     desc.textContent = pokemon.species.flavor_text_entries[0].flavor_text;
+    desc.classList.add('description');
 
 
     display.append(name, typing, img, desc);

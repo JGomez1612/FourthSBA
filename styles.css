@@ -4,8 +4,59 @@ body {
     padding: 0;
     box-sizing: border-box;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-*, *::before, *::after {
+
+*,
+*::before,
+*::after {
     box-sizing: inherit;
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+h2, p {
+    margin: 5px 0;
+}
+
+.name {
+    font-size: em;
+}
+
+.name::first-letter {
+    text-transform: uppercase;
+}
+
+.image {
+    width: 150px;
+    height: auto;
+}
+
+.description {
+    text-align: center;
+    color: brown;
 }

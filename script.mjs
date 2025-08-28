@@ -24,14 +24,14 @@ async function fetchPokemonByName(name) {
 
         const combinedData = {...pokeData, species: speciesData};
 
-        // console.log(combinedData);
+        console.log(combinedData);
         return combinedData;
     } catch (error) {
         console.error(error);
     }
 }
 
-fetchPokemonByName("meowscarada");
+fetchPokemonByName("");
 
 function displayPokemon(pokemon) {
     const display = document.getElementById('display');
@@ -52,15 +52,17 @@ function displayPokemon(pokemon) {
     } else {
         typing.textContent = `Types: ` + pokemon.types[0].type.name + ' | ' + pokemon.types[1].type.name;
     }
+    typing.classList.add('types')
 
     const img = document.createElement('img');
     img.src = pokemon.sprites.front_default;
     img.alt = pokemon.name;
+    img.classList.add('image')
 
     const desc = document.createElement('p');
     desc.textContent = pokemon.species.flavor_text_entries[0].flavor_text;
     desc.classList.add('description');
-
+// Some descriptions have a weird arrow or come in a different language. Unsure how to resolve at this time.
 
     display.append(name, typing, img, desc);
 }

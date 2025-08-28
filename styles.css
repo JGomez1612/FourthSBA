@@ -4,9 +4,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
 
 
@@ -16,6 +14,13 @@ body {
     box-sizing: inherit;
 }
 
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
 .container {
     text-align: center;
 }
@@ -23,6 +28,7 @@ body {
 h1 {
     text-align: center;
     margin: 0;
+    margin-bottom: 20px;
 }
 
 form {
@@ -39,12 +45,13 @@ form {
     gap: 10px;
 }
 
-h2, p {
+h2,
+p {
     margin: 5px 0;
 }
 
 .name {
-    font-size: em;
+    font-size: 2em;
 }
 
 .name::first-letter {
@@ -59,4 +66,15 @@ h2, p {
 .description {
     text-align: center;
     color: brown;
+}
+
+#pokeinfo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#pokeinfo img {
+    width: 150px;
+    height: auto;
 }

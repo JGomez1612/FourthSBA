@@ -37,6 +37,28 @@ form {
     margin-bottom: 20px;
 }
 
+#search input {
+    padding: 10px 15px;
+    font-size: 1.2em;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #ccccccef
+}
+
+#search button {
+    padding: 10px 20px;
+    margin-left: 5px;
+    font-size: 1.2em;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(218, 36, 36);
+    cursor: pointer;
+}
+
+#search button:hover {
+    background-color: rgb(167, 27, 27);
+}
+
 #display {
     display: flex;
     flex-direction: column;

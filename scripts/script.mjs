@@ -14,7 +14,7 @@ import { displayPokemon } from "../display.mjs";
 const search = document.getElementById('search');
 const input = document.getElementById('searchInput');
 
-search.addEventListener('submit', async (e) =>{
+search.addEventListener('submit', async (e) => {
     e.preventDefault();
     const pokeName = input.value;
     if(!pokeName) return;
